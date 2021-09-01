@@ -17,8 +17,11 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class TaskService {
 
-	@Autowired
 	private TaskRepository taskRepository;
+
+	public TaskService(TaskRepository taskRepository) {
+		this.taskRepository = taskRepository;
+	}
 
 	public Page<Task> getTasks(Pageable pageAble) {
 		return taskRepository.findAll(pageAble);
